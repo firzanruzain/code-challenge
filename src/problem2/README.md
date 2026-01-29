@@ -1,4 +1,3 @@
-
 # Currency Swap App – React + TypeScript + Vite
 
 This project is a custom-built currency swap application using React, TypeScript, and Vite. It features real-time pricing, robust validation, custom UI components, and a modern, responsive design. No component libraries are used; all UI is bespoke and fully restyled.
