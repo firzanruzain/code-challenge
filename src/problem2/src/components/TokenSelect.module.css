@@ -1,0 +1,176 @@
+.select {
+  width: 100%;
+  position: relative;
+  flex: 3;
+}
+
+.selectLabel {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.selectTrigger {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--stroke);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  cursor: pointer;
+  transition:
+    border-color 200ms ease,
+    background 200ms ease,
+    transform 200ms ease;
+}
+
+.selectTrigger:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateY(-1px);
+}
+
+.selectTriggerLeft {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.selectTriggerText {
+  text-align: left;
+}
+
+.selectSymbol {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.selectSub {
+  display: block;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.chevron {
+  font-size: 16px;
+  color: var(--muted);
+}
+
+.selectPopover {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  left: 0;
+  background: #0b0f17;
+  border: 1px solid var(--stroke);
+  border-radius: 14px;
+  box-shadow:
+    var(--shadow),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+  padding: 10px;
+  z-index: 10;
+  animation: dropdownSlide 200ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes dropdownSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.selectSearch {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--stroke);
+  color: var(--text);
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.selectList {
+  max-height: 240px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.selectOption {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.2rem;
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.selectOption:hover {
+  border-color: var(--accent);
+  background: rgba(109, 242, 193, 0.08);
+}
+
+.selectOption.isActive {
+  border-color: var(--accent-strong);
+  background: rgba(138, 232, 255, 0.08);
+}
+
+.selectOption.isDisabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.selectOptionMain {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  overflow: hidden;
+}
+
+.selectOptionPrice {
+  color: var(--muted);
+  font-size: 13px;
+  white-space: nowrap;
+  text-align: right;
+}
+
+.selectOptionSymbol {
+  letter-spacing: 0.03em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.selectEmpty {
+  text-align: center;
+  color: var(--muted);
+  padding: 12px 0;
+  font-size: 14px;
+}
+
+/* @media (max-width: 680px) {
+  .selectPopover {
+    position: fixed;
+    left: 16px;
+    right: 16px;
+  }
+} */
