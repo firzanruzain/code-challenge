@@ -1,75 +1,89 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Currency Swap App – React + TypeScript + Vite
 
-Currently, two official plugins are available:
+This project is a custom-built currency swap application using React, TypeScript, and Vite. It features real-time pricing, robust validation, custom UI components, and a modern, responsive design. No component libraries are used; all UI is bespoke and fully restyled.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## React Compiler
+- **Real-time token prices** with manual refresh and error handling
+- **Swap form** with validation, same-currency prevention, and animated feedback
+- **Custom hooks** for prices, swap state, calculations, and submission
+- **Reusable components**: SwapPanel, TokenSelect, AmountInput, UsdHint, Alert, Toast, etc.
+- **Graceful loading and error states** (spinners, skeletons, retry)
+- **Responsive, glassy UI** with custom CSS (see `App.css`, `index.css`)
+- **TypeScript strict mode** and modern ESLint configuration
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## Directory Structure
 
-Note: This will impact Vite dev & build performances.
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/problem2/
+├── DESIGN_AUDIT.md           # Design and refactoring notes
+├── README.md                 # This file
+├── package.json              # Project dependencies and scripts
+├── tsconfig*.json            # TypeScript configuration
+├── vite.config.ts            # Vite configuration
+├── eslint.config.js          # ESLint configuration
+├── public/                   # Static assets (e.g., vite.svg)
+├── keep/                     # (Legacy/demo) HTML, CSS, JS
+├── planCurrencySwapForm.prompt.md # Build plan and requirements
+└── src/
+    ├── App.tsx               # Main app component
+    ├── App.css               # App-level styles
+    ├── index.css             # Global styles
+    ├── main.tsx              # App entry point
+    ├── types.ts              # TypeScript types
+    ├── assets/               # Static assets (SVGs, etc.)
+    ├── components/
+    │   ├── Alert.tsx, .css
+    │   ├── AmountInput.tsx, .css
+    │   ├── MetadataItem.tsx, .css
+    │   ├── SwapHeader.tsx, .css
+    │   ├── SwapMetadata.tsx, .css
+    │   ├── SwapPanel.tsx, .css
+    │   ├── Toast.tsx, .css
+    │   ├── TokenIcon.tsx, .css
+    │   ├── TokenSelect.tsx, .css
+    │   └── UsdHint.tsx, .css
+    ├── hooks/
+    │   ├── usePrices.ts
+    │   ├── useSwapCalculations.ts
+    │   ├── useSwapState.ts
+    │   └── useSwapSubmission.ts
+    └── utils/
+        ├── format.ts
+        ├── tokenUtils.ts
+        └── validation.ts
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Getting Started
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. **Install dependencies:**
+   ```sh
+   npm install
+   ```
+2. **Run the development server:**
+   ```sh
+   npm run dev
+   ```
+3. **Build for production:**
+   ```sh
+   npm run build
+   ```
+4. **Lint the code:**
+   ```sh
+   npm run lint
+   ```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## ESLint & TypeScript
+
+- ESLint is configured for both JS and TS, with recommended and React rules. See `eslint.config.js` for details.
+- TypeScript is set to strict mode. See `tsconfig.app.json` and `tsconfig.json`.
+
+## Design & Architecture
+
+- See `DESIGN_AUDIT.md` for a summary of SOLID principles, separation of concerns, and custom hooks/components.
+- See `planCurrencySwapForm.prompt.md` for the original build plan and requirements.
+
+## License
+
+MIT (or as specified in the project root)
